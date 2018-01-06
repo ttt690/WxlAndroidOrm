@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao' //greendao插件
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1
+        daoPackage 'om.example.personal_library.rxjava_greendao'
+        targetGenDir 'src/main/java'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:26.+'
+    testCompile 'junit:junit:4.12'
+
+
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+    compile 'com.squareup.okio:okio:1.5.0'
+    compile 'com.yanzhenjie:permission:1.0.8'
+
+    compile 'org.greenrobot:greendao:3.2.0'
+/**
+ *    repositories {
+        jcenter()
+        mavenCentral()
+        }
+ dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.0'
+    classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'      //外层配置
+
+ }
+ */
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+}
